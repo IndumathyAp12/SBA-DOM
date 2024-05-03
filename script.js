@@ -3,16 +3,16 @@ const tilesContainer = document.querySelector(".tiles");
 
 // Define animals with their corresponding image paths
 
-const animals = [    { name: 'leopard', image: 'leopard.jpg' },
-{ name: 'monkey', image: 'monkey.jpg' },
-{ name: 'tiger', image: 'tiger.jpg' },
-{ name: 'lion', image: 'lion.jpg' },
-{ name: 'elephant', image: 'elephant.jpg' },
-{ name: 'deer', image: 'deer.jpg' },
-{ name: 'zebra', image: 'zebra.jpg' },
-{ name: 'rhino', image: 'rhino.jpg' },
-{ name: 'hippo', image: 'hippo.jpg' },
-{ name: 'bear', image: 'bear.jpg' }];
+const animals = [    { name: 'leopard', image: 'path/to/leopard.jpg' },
+{ name: 'monkey', image: 'path/to/monkey.jpg' },
+{ name: 'tiger', image: 'path/to/tiger.jpg' },
+{ name: 'lion', image: 'path/to/lion.jpg' },
+{ name: 'elephant', image: 'path/to/elephant.jpg' },
+{ name: 'deer', image: 'path/to/deer.jpg' },
+{ name: 'zebra', image: 'path/to/zebra.jpg' },
+{ name: 'rhino', image: 'path/to/rhino.jpg' },
+{ name: 'hippo', image: 'path/to/hippo.jpg' },
+{ name: 'bear', image: 'path/to/bear.jpg' } ];
 
 // Double the animals list for the memory game
 
@@ -86,7 +86,7 @@ function buildTile(animal) {
 for (let i = 0; i < tileCount; i++) {
     const randomIndex = Math.floor(Math.random() * animalsPicklist.length);
     const animal = animalsPicklist[randomIndex];
-    const tile = buildTile(animals);
+    const tile = buildTile(animal);
 
     animalsPicklist.splice(randomIndex, 1);
     tilesContainer.appendChild(tile);
