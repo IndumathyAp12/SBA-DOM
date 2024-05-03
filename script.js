@@ -2,6 +2,11 @@ console.log("Memory Game");
 
 const tileTemplate = document.getElementById("tile-template");
 const tilesContainer = document.getElementById("tilesContainer");
+// Get the form and input element
+const playerForm = document.getElementById("playerForm");
+const playerNameInput = document.getElementById("playerName");
+const playerNameError = document.getElementById("playerNameError");
+let gameStart = false;
 
 const animals = [
     { name: 'leopard', image: 'images/leopard.jpg' },
@@ -26,7 +31,7 @@ let awaitingEndOfMove = false;
 // Function to build a tile using the template
 function buildTile(animal) {
     // Clone the template content
-    const tile = tileTemplate.content.cloneNode(true);
+    const tile = tileTemplate.content.cloneNode(true);//Here tile is created using createElement indirectly through cloneNode
 
     // Configure the tile
     const tileElement = tile.querySelector(".tile");
@@ -43,6 +48,26 @@ function buildTile(animal) {
 
     return tileElement;
 }
+
+// function buildTile(animal) {
+//     // Create a new tile element
+//     const tile = document.createElement("div");
+//     tile.classList.add("tile");
+
+//     // Set data attribute for the animal name
+//     tile.setAttribute("data-animal", animal.name);
+
+//     // Add event listener to the tile
+//     tile.addEventListener("click", () => {
+//         handleTileClick(tile, animal.name);
+//     });
+
+//     // Append the tile to the container
+//     tilesContainer.appendChild(tile);
+
+//     return tile;
+// }
+
 
 // Game logic function to handle tile clicks
 function handleTileClick(tileElement, animalName) {
@@ -106,6 +131,7 @@ function handleTileClick(tileElement, animalName) {
 }
 
 // Build up tiles
+if (!gameStart) {
 for (let i = 0; i < tileCount; i++) {
     const randomIndex = Math.floor(Math.random() * animalsPicklist.length);
     const animal = animalsPicklist[randomIndex];
@@ -113,11 +139,9 @@ for (let i = 0; i < tileCount; i++) {
     animalsPicklist.splice(randomIndex, 1);
 
 }
-// Get the form and input element
-const playerForm = document.getElementById("playerForm");
-const playerNameInput = document.getElementById("playerName");
-const playerNameError = document.getElementById("playerNameError");
+gameStart =true;
 
+}
 // Function to validate the player name
 function validatePlayerName() {
     const playerName = playerNameInput.value.trim();
@@ -142,5 +166,7 @@ playerForm.addEventListener("submit", function(event) {
     // Prevent the form from submitting if validation fails
     if (!validatePlayerName()) {
         event.preventDefault();
+        return;
     }
+    event.preventDefault();
 });
