@@ -82,7 +82,7 @@ function handleTileClick(tileElement, animalName) {
         awaitingEndOfMove = false;
         revealedCount += 2;
 
-        // If all tiles are revealed, show a congratulatory message
+        // If all tiles are revealed, show a message
         if (revealedCount === tileCount) {
             alert("Congratulations!!! You have won the game.");
         }

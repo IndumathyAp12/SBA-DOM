@@ -1,22 +1,32 @@
 body {
-    background : rgb(184, 128, 137);
+    
+    background: linear-gradient(135deg, #46b929, #6dd5fa, #ffffff); 
     margin: 0;
+      
     }
-
+.memory-game h1 {
+        text-align: center; 
+        margin-top: 50px; 
+        font-size: 60px; 
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+        color: #333; 
+    }
     #tilesContainer {
         margin: 50px auto;
-        width: max-content;
+        width: fit-content;
         display: grid;
         grid-template-columns: repeat(5, 100px);
         gap: 20px;
         box-sizing: border-box;
+       
     }
 
     .tile {
         height: 100px;
         width: 100px;
         background: gray;
-        border: 6px solid rgb(228, 43, 74);
+        border: 6px solid rgb(224, 158, 138);
         cursor: pointer;
         background-size: cover;
+        justify-content: center;
     }

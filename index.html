@@ -13,8 +13,10 @@
     <form id="playerForm">
         <label for="playerName">Player Name:</label>
         <input type="text" id="playerName" name="playerName" required>
-        <span class="error" id="playerNameError"></span>
-        <button type="submit">Start Game</button>
+        <span class="error" id="playerNameError"></span><br>
+        <label for="avatar">Avatar:</label>
+        <input type="file" id="avatar" name="avatar" accept="image/*"><br>
+        <button type="submit">Start</button>
     </form>
     <template id="tile-template">
         <div class="tile" data-revealed="false"></div>
