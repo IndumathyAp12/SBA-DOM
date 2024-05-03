@@ -4,7 +4,7 @@ handleTileClick(tileElement, animalName): Handles the logic when a tile is click
 An event listener is added to each tile to handle clicks.
 Another event listener is added to the form for submitting the player's name, with validation to ensure it's not empty.
 Uses the parent-child-sibling relationship.Used appendChild 
-It defines an array of objects representing animals, each object containing a name and an image path.
+Game logic defines an array of objects representing animals, each object containing a name and an image path.
 It duplicates this array to create a list of animals for the game.
 It sets up variables to keep track of the game state, like revealedCount, activeTile, and awaitingEndOfMove.
 This game allows players to flip two tiles at a time, attempting to match pairs of animals until all tiles are revealed. It also prompts players to enter their name before starting the game. The game ends when all pairs are found.
