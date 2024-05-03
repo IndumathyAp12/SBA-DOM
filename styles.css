@@ -3,7 +3,7 @@ body {
     margin: 0;
     }
 
-    .tiles {
+    #tilesContainer {
         margin: 50px auto;
         width: max-content;
         display: grid;

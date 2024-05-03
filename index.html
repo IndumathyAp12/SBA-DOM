@@ -8,6 +8,7 @@
     <script defer src="script.js"></script>
 </head>
 <body>
+    <div class="memory-game">
     <h1>Memory Game</h1>
     <form id="playerForm">
         <label for="playerName">Player Name:</label>
@@ -15,10 +16,14 @@
         <span class="error" id="playerNameError"></span>
         <button type="submit">Start Game</button>
     </form>
-
-    <div class="tiles">
+    <template id="tile-template">
+        <div class="tile" data-revealed="false"></div>
+    </template>
+    <div id="tilesContainer"></div>
 
 
     </div>
+    <div id="playerNameDisplay"></div>
+</div>
 </body>
 </html>
