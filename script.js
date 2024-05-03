@@ -4,16 +4,16 @@ const tileTemplate = document.getElementById("tile-template");
 const tilesContainer = document.getElementById("tilesContainer");
 
 const animals = [
-    { name: 'leopard', image: 'path/to/leopard.jpg' },
-    { name: 'monkey', image: 'path/to/monkey.jpg' },
-    { name: 'tiger', image: 'path/to/tiger.jpg' },
-    { name: 'lion', image: 'path/to/lion.jpg' },
-    { name: 'elephant', image: 'path/to/elephant.jpg' },
-    { name: 'deer', image: 'path/to/deer.jpg' },
-    { name: 'zebra', image: 'path/to/zebra.jpg' },
-    { name: 'rhino', image: 'path/to/rhino.jpg' },
-    { name: 'hippo', image: 'path/to/hippo.jpg' },
-    { name: 'bear', image: 'path/to/bear.jpg' }
+    { name: 'leopard', image: 'images/leopard.jpg' },
+    { name: 'monkey', image: 'images/monkey.jpg' },
+    { name: 'tiger', image: 'images/tiger.jpg' },
+    { name: 'lion', image: 'images/lion.jpg' },
+    { name: 'elephant', image: 'images/elephant.jpg' },
+    { name: 'deer', image: 'images/deer.jpg' },
+    { name: 'zebra', image: 'images/zebra.jpg' },
+    { name: 'rhino', image: 'images/rhino.jpg' },
+    { name: 'hippo', image: 'images/hippo.jpg' },
+    { name: 'bear', image: 'images/bear.jpg' }
 ];
 
 const animalsPicklist = [...animals, ...animals];
@@ -31,7 +31,7 @@ function buildTile(animal) {
     // Configure the tile
     const tileElement = tile.querySelector(".tile");
     tileElement.setAttribute("data-animal", animal.name);
-    tileElement.style.backgroundImage = `url('${animal.image}')`;
+    
 
     // Add event listener to the tile
     tileElement.addEventListener("click", () => {
@@ -56,6 +56,8 @@ function handleTileClick(tileElement, animalName) {
 
     // Flip the tile by changing its background color
     tileElement.style.backgroundColor = "white";
+
+    tileElement.style.backgroundImage = `url('images/${animalName}.jpg')`;
 
     // If there's no active tile, set the clicked tile as the active tile
     if (!activeTile) {
@@ -91,7 +93,9 @@ function handleTileClick(tileElement, animalName) {
 
     setTimeout(() => {
         tileElement.style.backgroundColor = null;
+        tileElement.style.backgroundImage = null;
         activeTile.style.backgroundColor = null;
+        activeTile.style.backgroundImage = null;
 
         // Reset activeTile and awaitingEndOfMove
         activeTile = null;
