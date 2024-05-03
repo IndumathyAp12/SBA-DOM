@@ -14,6 +14,28 @@ function buildTile(animal) {
 
     element.classList.add("tile");
     element.setAttribute("data-animal", animal);
+    element.setAttribute("data-revealed", "false");
+    element.addEventListener("click", () => {
+ if (awaitingEndOfMove) {
+    return;
+ }
+  element.style.backgroundColor = animal;
+  if (!activeTile) {
+    activeTile = element;
+    return;
+  }
+
+  awaitingEndOfMove = true;
+
+  setTimeout(() =>{
+    element.style.backgroundColor = null;
+    activeTile.style.backgroundColor = null;
+
+    awaitingEndOfMove = false;
+    activeTile = null;
+  },1000);
+
+    });
     return element;
 }
 
