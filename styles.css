@@ -8,12 +8,13 @@ body {
         width: max-content;
         display: grid;
         grid-template-columns: repeat(5, 100px);
-        gap: 15px;
+        gap: 20px;
         box-sizing: border-box;
     }
 
     .tile {
         height: 100px;
+        width: 100px;
         background: gray;
         border: 6px solid rgb(228, 43, 74);
         cursor: pointer;

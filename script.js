@@ -64,8 +64,7 @@ function handleTileClick(tileElement, animalName) {
         activeTile = tileElement;
         return;
     }
-    // Modify the inner text of the tile element
-    tileElement.textContent = animalName; // Change this line to modify innerHTML or innerText if needed
+
 
     // Retrieve animal of the active tile
     const activeAnimalName = activeTile.getAttribute("data-animal");
@@ -74,6 +73,9 @@ function handleTileClick(tileElement, animalName) {
     if (activeAnimalName === animalName) {
         tileElement.setAttribute("data-revealed", "true");
         activeTile.setAttribute("data-revealed", "true");
+
+            // Modify the inner text of the tile element
+    tileElement.textContent = animalName; // Change this line to modify innerHTML or innerText if needed
 
         // Reset activeTile and awaitingEndOfMove
         activeTile = null;
