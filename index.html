@@ -10,49 +10,50 @@
 </head>
 
 <body>
-    <div class="memory-game">
-        <h1>Memory Game</h1>
-        <form id="playerForm">
-            <label for="playerName">Player Name:</label>
-            <input type="text" id="playerName" name="playerName" required>
-            <span class="error" id="playerNameError"></span><br>
-            <label for="avatar">Avatar:</label>
-            <input type="file" id="avatar" name="avatar" accept="image/*"><br>
-            <button type="submit">Start</button>
-        </form>
-        <div id="instructions">
-            <p>Welcome to the Memory Game!</p>
-            <h2>Instructions</h2>
-            <ul>
-                <li>
-                    <p>Fill in your name and choose an avatar to start the game.</p>
-                </li>
-                <li>
-                    <p>Match pairs of animal tiles to win.</p>
-                </li>
-                <li>
-                    <p>Click on a tile to reveal its animal. Click on another tile to find its match.</p>
-                </li>
-                <li>
-                    <p>If the animals on the tiles match, they will remain revealed. Otherwise, they will flip back.</p>
-                </li>
-                <li>
-                    <p>Keep matching until all tiles are revealed.</p>
-                </li>
-            </ul>
-            <template id="tile-template">
-                <div class="tile" data-revealed="false"></div>
-            </template>
+    <div class="container">
+        <div class="memory-game">
+            <h1>Memory Game</h1>
+            <form id="playerForm">
+                <label for="playerName">Player Name:</label>
+                <input type="text" id="playerName" name="playerName" required>
+                <span class="error" id="playerNameError"></span><br>
+                <label for="avatar">Avatar:</label>
+                <input type="file" id="avatar" name="avatar" accept="image/*"><br>
+                <button type="submit">Start</button>
+            </form>
+            <div id="instructions">
+                <p>Welcome to the Memory Game!</p>
+                <h2>Instructions</h2>
+                <ul>
+                    <li>
+                        <p>Fill in your name and choose a avatar to start the game.</p>
+                    </li>
+                    <li>
+                        <p>Match pairs of animal tiles to win.</p>
+                    </li>
+                    <li>
+                        <p>Click on a tile to reveal its animal. Click on another tile to find its match.</p>
+                    </li>
+                    <li>
+                        <p>If the animals on the tiles match, they will remain revealed. Otherwise, they will flip back.</p>
+                    </li>
+                    <li>
+                        <p>Keep matching until all tiles are revealed.</p>
+                    </li>
+                </ul>
+                <template id="tile-template">
+                    <div class="tile" data-revealed="false"></div>
+                </template>
+            </div>
         </div>
+
+        <div id="tilesContainer"></div>
+
+        <div id="playerNameDisplay"></div>
+        <footer>
+            <p>&copy; 2024 MemoryGame. All rights reserved.</p>
+        </footer>
     </div>
-
-    <div id="tilesContainer"></div>
-
-    <div id="playerNameDisplay"></div>
-    <footer>
-        <p>&copy; 2024 MemoryGame. All rights reserved.</p>
-    </footer>
-
 </body>
 
 </html>
