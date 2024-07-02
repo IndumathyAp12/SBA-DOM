@@ -1,8 +1,6 @@
 body {
-
     background: linear-gradient(135deg, #46b929, #6dd5fa, #ffffff);
     margin: 0;
-
 }
 
 .memory-game h1 {
@@ -22,7 +20,6 @@ body {
     gap: 20px;
     box-sizing: border-box;
     align-items: center;
-
 }
 
 .container {
@@ -48,7 +45,6 @@ body {
     top: 20px;
     right: 20px;
     border-radius: 5px;
-
 }
 
 #instructions h2 {
@@ -59,7 +55,6 @@ body {
 #instructions p {
     margin-bottom: 10px;
 }
-
 
 form {
     display: flex;
@@ -85,11 +80,9 @@ footer {
     color: black;
     padding: 20px;
     text-align: center;
-
 }
 
 footer p {
     margin: 0;
     font-size: 16px;
 }
-

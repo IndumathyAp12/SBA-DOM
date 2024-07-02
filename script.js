@@ -31,16 +31,15 @@ let awaitingEndOfMove = false;
 // Function to build a tile using the template
 function buildTile(animal) {
     // Clone the template content
-    const tile = tileTemplate.content.cloneNode(true);//Here tile is created using createElement indirectly through cloneNode
+    const tile = tileTemplate.content.cloneNode(true);
 
     // Configure the tile
     const tileElement = tile.querySelector(".tile");
     tileElement.setAttribute("data-animal", animal.name);
-    
 
     // Add event listener to the tile
     tileElement.addEventListener("click", () => {
-        handleTileClick(tileElement, animal.name);
+        handleTileClick(tileElement, animal.image);
     });
 
     // Append the tile to the container
@@ -49,28 +48,8 @@ function buildTile(animal) {
     return tileElement;
 }
 
-// function buildTile(animal) {
-//     // Create a new tile element
-//     const tile = document.createElement("div");
-//     tile.classList.add("tile");
-
-//     // Set data attribute for the animal name
-//     tile.setAttribute("data-animal", animal.name);
-
-//     // Add event listener to the tile
-//     tile.addEventListener("click", () => {
-//         handleTileClick(tile, animal.name);
-//     });
-
-//     // Append the tile to the container
-//     tilesContainer.appendChild(tile);
-
-//     return tile;
-// }
-
-
 // Game logic function to handle tile clicks
-function handleTileClick(tileElement, animalName) {
+function handleTileClick(tileElement, animalImage) {
     // Retrieve data attribute
     const revealed = tileElement.getAttribute("data-revealed");
 
@@ -79,10 +58,9 @@ function handleTileClick(tileElement, animalName) {
         return;
     }
 
-    // Flip the tile by changing its background color
+    // Flip the tile by changing its background color and image
     tileElement.style.backgroundColor = "white";
-
-    tileElement.style.backgroundImage = `url('images/${animalName}.jpg')`;
+    tileElement.style.backgroundImage = `url('${animalImage}')`;
 
     // If there's no active tile, set the clicked tile as the active tile
     if (!activeTile) {
@@ -90,17 +68,13 @@ function handleTileClick(tileElement, animalName) {
         return;
     }
 
-
     // Retrieve animal of the active tile
     const activeAnimalName = activeTile.getAttribute("data-animal");
 
     // If the animals match, mark both tiles as revealed
-    if (activeAnimalName === animalName) {
+    if (activeAnimalName === animalImage.split('/')[1].split('.')[0]) {
         tileElement.setAttribute("data-revealed", "true");
         activeTile.setAttribute("data-revealed", "true");
-
-            // Modify the inner text of the tile element
-    tileElement.textContent = animalName; // Change this line to modify innerHTML or innerText if needed
 
         // Reset activeTile and awaitingEndOfMove
         activeTile = null;
@@ -109,7 +83,9 @@ function handleTileClick(tileElement, animalName) {
 
         // If all tiles are revealed, show a message
         if (revealedCount === tileCount) {
-            alert("Congratulations!!! You have won the game.");
+            setTimeout(() => {
+                alert("Congratulations!!! You have won the game.");
+            }, 500); // Delay to ensure the final tile is shown before the alert
         }
 
         return;
@@ -120,9 +96,9 @@ function handleTileClick(tileElement, animalName) {
 
     setTimeout(() => {
         tileElement.style.backgroundColor = null;
-        tileElement.style.backgroundImage = null;
+        tileElement.style.backgroundImage = '';
         activeTile.style.backgroundColor = null;
-        activeTile.style.backgroundImage = null;
+        activeTile.style.backgroundImage = '';
 
         // Reset activeTile and awaitingEndOfMove
         activeTile = null;
@@ -130,18 +106,25 @@ function handleTileClick(tileElement, animalName) {
     }, 1000);
 }
 
-// Build up tiles
-if (!gameStart) {
-for (let i = 0; i < tileCount; i++) {
-    const randomIndex = Math.floor(Math.random() * animalsPicklist.length);
-    const animal = animalsPicklist[randomIndex];
-    buildTile(animal);
-    animalsPicklist.splice(randomIndex, 1);
+// Function to build and shuffle tiles
+function initializeGame() {
+    // Clear any existing tiles
+    tilesContainer.innerHTML = "";
 
-}
-gameStart =true;
+    // Shuffle and build tiles
+    const shuffledAnimals = [...animals, ...animals];
+    shuffledAnimals.sort(() => Math.random() - 0.5);
 
+    shuffledAnimals.forEach(animal => {
+        buildTile(animal);
+    });
+
+    // Reset game variables
+    revealedCount = 0;
+    activeTile = null;
+    awaitingEndOfMove = false;
 }
+
 // Function to validate the player name
 function validatePlayerName() {
     const playerName = playerNameInput.value.trim();
@@ -168,5 +151,14 @@ playerForm.addEventListener("submit", function(event) {
         event.preventDefault();
         return;
     }
+    // Prevent the default form submission
     event.preventDefault();
+
+    // Initialize the game
+    if (!gameStart) {
+        initializeGame();
+        gameStart = true;
+    }
+
+    alert("Player name is valid. Starting the game!");
 });
